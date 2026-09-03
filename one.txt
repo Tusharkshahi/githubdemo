@@ -1,0 +1,45 @@
+~/.rote/flows/npm-health-clean$ grep -n 'type' /home/tusharshahi/.rote/flows/npm-health-clean/main.ts | head -20
+11: * type: string
+18: * flow_type: parallel
+23: * type: process.exec
+30: * type: process.exec
+37: * type: process.exec
+44: * type: process.exec
+67:function renderStep(step: ReturnType<typeof ctx.step>): unknown {
+90:  if (!body || typeof body !== "object") return null;
+93:  if (typeof s?.text !== "string") return null;
+102:const pkg = typeof dlData?.package === "string" ? dlData.package : "unknown";
+103:const version = typeof distTags?.latest === "string" ? distTags.latest : "unknown";
+104:const license = typeof meta?.license === "string" ? meta.license : "unknown";
+106:const dlCount = typeof dlData?.downloads === "number" ? dlData.downloads : 0;
+(base) tusharshahi@DESKTOP-1PHTV0I:~/.rote/flows/npm-health-clean$ head -30 main.ts 
+#!/usr/bin/env -S rote play run
+/**
+ * @rote-frontmatter
+ * ---
+ * name: npm-package-health
+ * description: "Health report for any npm package. Downloads, license, maintainers, CVEs. Grade A-F."
+ * provenance:
+ * author: tusharshahi <tusharkshahi@gmail.com>
+ * parameters:
+ * - name: package_name
+ * type: string
+ * required: true
+ * metadata:
+ * rote_version: "0.78.0"
+ * version: 0.1.0
+ * status: draft
+ * kind: atomic
+ * flow_type: parallel
+ * execution_model: steps_with_presentation
+ * requires_sessions: false
+ * steps:
+ * curl:
+ * type: process.exec
+ * timeout_ms: 10000
+ * argv:
+ * - curl
+ * - -s
+ * - https://registry.npmjs.org/-/package/$package_name/dist-tags
+ * curl_2:
+ * type: process.exec
