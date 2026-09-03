@@ -1,27 +1,52 @@
-rote registry play push main.ts tusharshahi
-@@status
-ok: Play uploaded successfully
+cd /tmp && rote play run tusharshahi/npm-package-health package_name=express
+ROTE PLAY
 
-@@result
-play: tusharshahi/npm-package-health
-version: 0.1.0
-play_location: canonical
-play_run_eligible: true
-play_run_variant: legacy DAG
-status: released
-size_bytes: 2777
-visibility: public
-play_reference: tusharshahi/npm-package-health@0.1.0
-play_uri: https://play.modiqo.ai/tusharshahi/npm-package-health@0.1.0
-bootstrap_uri: https://play.modiqo.ai/install?play=tusharshahi/npm-package-health@0.1.0
-privileged_access: process
+npm-package-health
+tusharshahi · public user play
 
-@@next
-- rote play inspect https://play.modiqo.ai/tusharshahi/npm-package-health@0.1.0
-- rote play run https://play.modiqo.ai/tusharshahi/npm-package-health@0.1.0 @@optional
-- rote registry play pull tusharshahi/npm-package-health @@optional
+Health report for any npm package. Downloads, license, maintainers, CVEs. Grade A-F.
 
-@@learn
-- Play is published and available immediately.
-- Share `https://play.modiqo.ai/tusharshahi/npm-package-health@0.1.0`. A GET describes the pinned play and advertises its consented preparation transitions.
-- The public Play URI can be resolved and run by anyone. It performs process work, which rote discloses before execution.
+ACCESS
+Services           none
+Writes             none declared
+Authentication     none
+Privileged access  process
+
+PARAMETERS
+Package name       express
+> Ready Run with displayed values
+SETUP
+play installed
+npm Package Health: express
+  version      5.2.1
+  A downloads    132.9M/week
+  A license      MIT
+  A maintainers  5
+  C security     5 CVEs
+
+GRADE  C  Use with caution. Review flagged signals.
+(base) tusharshahi@DESKTOP-1PHTV0I:/tmp$ cd /tmp && rote play run tusharshahi/npm-package-health package_name=lodash
+ROTE PLAY
+
+npm-package-health
+tusharshahi · public user play
+
+Health report for any npm package. Downloads, license, maintainers, CVEs. Grade A-F.
+
+ACCESS
+Services           none
+Writes             none declared
+Authentication     none
+Privileged access  process
+
+PARAMETERS
+Package name       lodash
+> Ready Run with displayed values
+npm Package Health: lodash
+  version      4.18.1
+  A downloads    173.7M/week
+  A license      MIT
+  A maintainers  3
+  D security     10 CVEs
+
+GRADE  D  Risky. Consider an alternative.
